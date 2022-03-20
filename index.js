@@ -6,7 +6,7 @@ const session=require("express-session");
 const passport=require("passport");
 const passportjwt=require('./config/passport-jwt-strategy');
 const MongoStore = require('connect-mongo');
-const port = 8000;
+const port =  process.env.PORT || 8000;
 const db = require('./config/mongoose');
 
 app.use(express.urlencoded({ extended: true }));
@@ -21,7 +21,7 @@ app.use(session({
         maxAge: (1000 * 60 * 1000),
     },
     store: MongoStore.create({
-        mongoUrl: 'mongodb://localhost/Ecom',
+        mongoUrl: 'mongodb+srv://siddhu:siddhu@cluster0.9yjwk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
         autoRemove: 'disabled',
     },
         function (err) {
